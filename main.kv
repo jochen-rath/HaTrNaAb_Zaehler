@@ -1,0 +1,98 @@
+<MultiButton@Button>:
+    text: 'Multi'
+    size_hint:None,None
+    background_color: 0, 1, 1, 1
+    font_size: app.schriftgroesse
+    size: 5*self.font_size, 4*self.font_size
+
+<MenuButton@MultiButton>:
+    on_release: app.entferneMenuLadeSitzplan(self.text)
+
+<MenuZeile@FloatLayout>:
+    MultiButton:
+        text:'Beenden'
+        pos_hint:{"left":0,"y":0}
+        on_press: app.entferneSitzplanLadeMenu()
+        size: 5*self.font_size, 2*self.font_size
+    MultiButton:
+        text:'Speichern'
+        pos_hint:{"right":1,"y":0}
+        on_press: self.parent.parent.schreibeConfigDatei()
+        size: 5*self.font_size, 2*self.font_size
+
+
+<KleinerButton@Button>:
+    text: "+"
+    size_hint:None,None
+    background_color: 0, 1, 1, 1
+    font_size: app.schriftgroesse
+    size: 2*self.font_size, 2*self.font_size
+
+<ZeigeWert@Label>:
+    text: "0"
+    size_hint:None,None
+    font_size: app.schriftgroesse
+    size: 2*app.schriftgroesse, 2*app.schriftgroesse
+
+<Namenslabel@Label>:
+    text: "Vorname"
+    size_hint:None,None
+    font_size: app.schriftgroesse
+    size: 5*app.schriftgroesse, 2*app.schriftgroesse
+
+
+<Zaehler@BoxLayout>:
+    orientation: 'horizontal'
+    size_hint:None,None
+    size: 3.5*2*app.schriftgroesse, 2*app.schriftgroesse
+    KleinerButton:
+        id:minus
+        text: "-"
+        on_press: self.parent.parent.parent.fuegeWertEinUndStelleSieDar(self)
+    ZeigeWert:
+        id:ausgabe
+        text: "0"
+    KleinerButton:
+        id:plus
+        text: "+"
+        on_press: self.parent.parent.parent.fuegeWertEinUndStelleSieDar(self)
+
+<Ueberschrift@Label>:
+    text: '0'
+    size_hint:None,None
+    font_size: app.schriftgroesse
+    size: 3.5*2*app.schriftgroesse, 2*app.schriftgroesse
+
+
+<Ueberschriften@BoxLayout>
+    id:zeile
+    orientation: 'horizontal'
+    Namenslabel:
+        text:''
+        size: 6*app.schriftgroesse, 2*app.schriftgroesse
+    Ueberschrift:
+        text:'Hausaufgaben'
+    Ueberschrift:
+        text:'Trainingsraum'
+    Ueberschrift:
+        text:'Nacharbeiten'
+    Ueberschrift:
+        text:'Abschreiben'
+
+<Zeile@BoxLayout>:
+    id:zeile
+    orientation: 'horizontal'
+    Namenslabel:
+        id: name
+        vorname: 'Vorname'
+        nachname: 'Nachname'
+        text: (self.vorname if len(self.vorname)<10 else self.vorname[0:10]+'.')+' '+self.nachname[0]
+        size: 6*app.schriftgroesse, 2*app.schriftgroesse
+    Zaehler:
+        id:Ha
+    Zaehler:
+        id:Tr
+    Zaehler:
+        id:Na
+    Zaehler:
+        id:Abschr
