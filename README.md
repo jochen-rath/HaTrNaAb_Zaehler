@@ -2,19 +2,19 @@
 In dieser App kann man Dokumentieren, wie oft Schüler Hausaufgaben vergessen haben, in den Trainings, Nacharbeiten  oder etwas anderes Abschreiben müssen.
 
 
-##Voraussetzungen
+## Voraussetzungen
 Die App ist in Python geschrieben und benötigt Kivy. Installiere es mit
 ```
 pip3 install kivy
 ```
 
-##Android App erstellen
+## Android App erstellen
 In der Datei buildozer.spec sind die Voraussetzungen zur Erzeugung der Android App gegeben. Erzeuge die App mit dem Befehl
 ```
 buildozer android debug
 ```
 
-##Nutzung
+## Nutzung
 Auf einem Linux/Windows Computer kann die App direkt genutzt werden:
 ```
 python main.py
